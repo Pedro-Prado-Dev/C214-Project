@@ -57,7 +57,7 @@ function LoginPage() {
     <div className="formulario-body">
       <div className="formulario-card">
         <div className="formulario-title">
-            <hi>Academico</hi>
+            <h1>Academico</h1>
         </div>
         
         <form className="formuario-infos">

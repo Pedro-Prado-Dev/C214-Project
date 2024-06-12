@@ -1,6 +1,8 @@
 // LoginPage.test.js
 import React from 'react';
 import { render, fireEvent, getByText, waitFor, queryByPlaceholderText } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom'; // Importe MemoryRouter
+
 import LoginPage from '../pages/login_page/login';
 import Swal from 'sweetalert2';
 import '@testing-library/jest-dom/extend-expect';
@@ -15,7 +17,11 @@ global.fetch = jest.fn(() =>
   })
 );
 test("updates username and password on change", () => {
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+  <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+  );
   const usernameInput = queryByPlaceholderText("Matrícula");
   const passwordInput = queryByPlaceholderText("Senha");
 
@@ -28,21 +34,35 @@ test("updates username and password on change", () => {
 
 test('Elemento do switch alert não pode estar no começo ao iniciar a página', () => {
   // Renderiza o componente LoginPage
-  const { queryByText } = render(<LoginPage />);
+  const { queryByText } = render(<MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>);
 
   expect(queryByText('OK')).toBeNull();
 });
 
 test("renders correctly", () => {
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+  <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+  );
   expect(queryByPlaceholderText("Matrícula")).not.toBeNull();
   });
 test("renders correctly", () => {
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+    <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+  );
   expect(queryByPlaceholderText("Senha")).not.toBeNull();
 });
 test("renders correctly", () => {
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+<MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+  );
   expect(getByText("Login")).not.toBeNull();
 });
 
@@ -50,7 +70,13 @@ test("handles network error during login", async () => {
   jest.clearAllMocks();
 
   fetch.mockImplementationOnce(() => Promise.reject(new Error("Network Error")));
-  const { queryByText,getByPlaceholderText, container } = render(<LoginPage />);
+  const { queryByText,getByPlaceholderText, container } = render(
+
+    <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+
+  );
 
   const usernameInput = getByPlaceholderText("Matrícula");
   const passwordInput = getByPlaceholderText("Senha");
@@ -77,7 +103,11 @@ test("handles login failure with incorrect credentials", async () => {
   );
   jest.clearAllMocks();
 
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+    <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+  );
 
   const usernameInput = queryByPlaceholderText("Matrícula");
   const passwordInput = queryByPlaceholderText("Senha");
@@ -102,7 +132,13 @@ test("handles successful login", async () => {
   );
   jest.clearAllMocks();
 
-  const {queryByPlaceholderText,getByText } = render(<LoginPage />);
+  const {queryByPlaceholderText,getByText } = render(
+
+    <MemoryRouter> 
+    <LoginPage />
+  </MemoryRouter>
+
+  );
 
   const usernameInput = queryByPlaceholderText("Matrícula");
   const passwordInput = queryByPlaceholderText("Senha");
