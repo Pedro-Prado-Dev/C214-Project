@@ -1,0 +1,66 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "João",
+            "schedule": [
+                {"day": "Monday", "time": "08:00", "subject": "Math"},
+                {"day": "Tuesday", "time": "10:00", "subject": "Science"}
+            ],
+            "grades": {
+                "Math": {"NP1": 7.5, "NP2": 8.0},
+                "Science": {"NP1": 6.0, "NP2": 7.5}
+            },
+            "attendance": [
+                {"date": "2024-06-01", "status": "present"},
+                {"date": "2024-06-02", "status": "absent"}
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Maria",
+            "schedule": [
+                {"day": "Monday", "time": "09:00", "subject": "History"},
+                {"day": "Wednesday", "time": "11:00", "subject": "Math"}
+            ],
+            "grades": {
+                "History": {"NP1": 8.0, "NP2": 9.0},
+                "Math": {"NP1": 7.0, "NP2": 8.5}
+            },
+            "attendance": [
+                {"date": "2024-06-01", "status": "present"},
+                {"date": "2024-06-03", "status": "absent"}
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Carlos",
+            "schedule": [
+                {"day": "Tuesday", "time": "10:00", "subject": "Science"},
+                {"day": "Thursday", "time": "08:00", "subject": "Math"}
+            ],
+            "grades": {
+                "Science": {"NP1": 6.5, "NP2": 7.5},
+                "Math": {"NP1": 8.0, "NP2": 8.5}
+            },
+            "attendance": [
+                {"date": "2024-06-01", "status": "present"},
+                {"date": "2024-06-04", "status": "absent"}
+            ]
+        }
+    ],
+    "notifications": [
+        {
+            "id": 1,
+            "title": "New Schedule Update",
+            "content": "Please check the new updated schedule.",
+            "date": "2024-06-10T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "title": "Exam Reminder",
+            "content": "Don't forget about the upcoming exams next week.",
+            "date": "2024-06-11T15:00:00Z"
+        }
+    ]
+}
