@@ -5,11 +5,11 @@
             "name": "admin",
             "schedule": [
                 {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"},
-                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"}
+                {"day": "Monday", "time": "09:00", "subject": "C214 - B - I20"}
             ],
             "grades": {
-                "Math": {"NP1": 7.5, "NP2": 8.0},
-                "Science": {"NP1": 6.0, "NP2": 7.5}
+                "0": {"NP1": 7.5, "NP2": 8.0},
+                "1": {"NP1": 6.0, "NP2": 7.5}
             },
             "attendance": [
                 {"date": "2024-06-01", "status": "present"},

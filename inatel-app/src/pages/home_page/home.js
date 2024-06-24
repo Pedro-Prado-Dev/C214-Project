@@ -8,15 +8,15 @@ import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 function HomePage() {
   const [userClassesInfo, setUserClassesInfo] = useState([])
   const [userGradesInfo, setUserGradesInfo] = useState([])
-
+  const user = localStorage.getItem("user");
+  const userData = JSON.parse(user);
 
   // Use useEffect para carregar os dados do localStorage
   useEffect(() => {
     // Recupera o usuário do localStorage
-    const user = localStorage.getItem("user");
+    
     if (user) {
       // Converte a string JSON de volta para um objeto JavaScript
-      const userData = JSON.parse(user);
       // Define o estado com o ID do usuário
       fetch(`http://localhost:5000/api/students/${userData.id}/schedule`)
         .then((response) => {
@@ -31,7 +31,7 @@ function HomePage() {
         .catch((error) => {
           // Trate o erro conforme necessário
         });
-        fetch(`http://localhost:5000/api/students/${userData.id}/schedule`)
+        fetch(`http://localhost:5000/api/students/${userData.id}/grades`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Erro ao obter o horário do aluno");
@@ -40,7 +40,6 @@ function HomePage() {
         })
         .then((data) => {
           setUserGradesInfo(data)
-          console.log(data)
         })
         .catch((error) => {
           // Trate o erro conforme necessário
@@ -61,7 +60,7 @@ function HomePage() {
           <div className="home-classes-body">
             {
               userClassesInfo.map(user=>(
-                <Class grades = {userGradesInfo} user={user}/>
+                <Class userId = {userData.id} grades = {userGradesInfo} user={user}/>
               ))
             }
           </div>

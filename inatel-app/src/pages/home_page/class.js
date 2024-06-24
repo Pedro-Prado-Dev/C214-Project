@@ -1,17 +1,21 @@
-import React,{useState} from "react";
+import React,{useState, useRef} from "react";
 import "./css/class.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function Class(props) {
-  console.log(props.user); // Certifique-se de que props.subject esteja definido corretamente aqui
+  console.log(props.grades[0]); // Certifique-se de que props.subject esteja definido corretamente aqui
 
   const [showTable, setShowTable] = useState(false);
 
+  const arrowRef = useRef(null); // Usar useRef para acessar o ícone da seta
+
   const handleArrowClick = () => {
     setShowTable(!showTable); // Alternar o estado showTable ao clicar na seta
+    if (arrowRef.current) {
+      arrowRef.current.style.transform = showTable ? 'rotate(90deg)' : 'rotate(270deg)';
+    }
   };
-  console.log(props.userGradesInfo)
 
   return (
     <div className="class-body">
@@ -35,8 +39,8 @@ function Class(props) {
             </thead>
             <tbody>
               <tr>
-                <td>{}</td>
-                <td>{}</td>
+                <td>{props.grades[0]['NP1']}</td>
+                <td>{props.grades[0]['NP2']}</td>
                 {/* Adicione mais linhas de dados conforme necessário */}
               </tr>
             </tbody>
@@ -45,7 +49,7 @@ function Class(props) {
         </div>
       </div>
       <div onClick={handleArrowClick} className="class-arrow">
-        <FontAwesomeIcon icon={faArrowRight} className="icon-arrow" />
+        <FontAwesomeIcon icon={faArrowRight} ref={arrowRef}  className="icon-arrow" />
       </div>
     </div>
   );
