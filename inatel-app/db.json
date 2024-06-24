@@ -2,10 +2,10 @@
     "students": [
         {
             "id": 1,
-            "name": "João",
+            "name": "admin",
             "schedule": [
-                {"day": "Monday", "time": "08:00", "subject": "Math"},
-                {"day": "Tuesday", "time": "10:00", "subject": "Science"}
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"},
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"}
             ],
             "grades": {
                 "Math": {"NP1": 7.5, "NP2": 8.0},
@@ -20,8 +20,8 @@
             "id": 2,
             "name": "Maria",
             "schedule": [
-                {"day": "Monday", "time": "09:00", "subject": "History"},
-                {"day": "Wednesday", "time": "11:00", "subject": "Math"}
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"},
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"}
             ],
             "grades": {
                 "History": {"NP1": 8.0, "NP2": 9.0},
@@ -36,8 +36,8 @@
             "id": 3,
             "name": "Carlos",
             "schedule": [
-                {"day": "Tuesday", "time": "10:00", "subject": "Science"},
-                {"day": "Thursday", "time": "08:00", "subject": "Math"}
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"},
+                {"day": "Monday", "time": "09:00", "subject": "C208 - B - I16"}
             ],
             "grades": {
                 "Science": {"NP1": 6.5, "NP2": 7.5},

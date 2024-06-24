@@ -1,15 +1,55 @@
-import React, { useState } from "react";
-import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 import "./css/home.css";
 import Class from "./class";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage() {
+  const [userId, setUserId] = useState(null);
+  const [userClassesInfo, setUserClassesInfo] = useState([])
+  const [userGradesInfo, setUserGradesInfo] = useState([])
 
 
-    
+  // Use useEffect para carregar os dados do localStorage
+  useEffect(() => {
+    // Recupera o usuário do localStorage
+    const user = localStorage.getItem("user");
+    if (user) {
+      // Converte a string JSON de volta para um objeto JavaScript
+      const userData = JSON.parse(user);
+      // Define o estado com o ID do usuário
+      setUserId(userData.id);
+      fetch(`http://localhost:5000/api/students/${userData.id}/schedule`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao obter o horário do aluno");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setUserClassesInfo(data)
+        })
+        .catch((error) => {
+          // Trate o erro conforme necessário
+        });
+        fetch(`http://localhost:5000/api/students/${userData.id}/schedule`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao obter o horário do aluno");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setUserGradesInfo(data)
+          console.log(data)
+        })
+        .catch((error) => {
+          // Trate o erro conforme necessário
+        });
+    }
+  }, []); // O segundo parâmetro vazio [] assegura que o useEffect seja executado apenas uma vez
 
   return (
     <div className="home-body">
@@ -20,13 +60,14 @@ function HomePage() {
           <FontAwesomeIcon icon={faBell} className="icon" />
         </div>
         <div className="home-classes">
-            <div className="home-classes-title">
-                Today's Classes
-              </div>
-            <div className="home-classes-body">
-              
-              <Class></Class>
-            </div>
+          <div className="home-classes-title">Today's Classes</div>
+          <div className="home-classes-body">
+            {
+              userClassesInfo.map(user=>(
+                <Class grades = {userGradesInfo} user={user}/>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>

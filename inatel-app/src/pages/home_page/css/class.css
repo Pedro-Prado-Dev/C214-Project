@@ -50,3 +50,9 @@
     margin-right: 15px;
     transform: rotate(90deg);
 }
+.class-content-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

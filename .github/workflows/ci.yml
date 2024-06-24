@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Change directory to inatel-app
+        run: cd inatel-app
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: inatel-app
+
+      - name: Run tests
+        run: npm test
+        working-directory: inatel-app
+
+      - name: Build project
+        run: npm run build
+        working-directory: inatel-app
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: inatel-app/build
