@@ -28,7 +28,6 @@ Para executar testes:
 npm run test-dev
 ## Autores
 Davi dos Santos Balbino Marcelino - GES 68
-Jonathan Stefan Covelo de Carvalho - GEC 1668
 Marcelo Henrique Souza Abrantes- GEC 1538
 Pedro Henrique do Prado Paiva - GEC 1685
 
